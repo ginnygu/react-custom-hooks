@@ -8062,7 +8062,7 @@
   "resolved" "https://registry.yarnpkg.com/qs/-/qs-6.7.0.tgz"
   "version" "6.7.0"
 
-"query-string@^4.1.0":
+"query-string@^4.1.0", "query-string@^4.3.4":
   "resolved" "https://registry.yarnpkg.com/query-string/-/query-string-4.3.4.tgz"
   "version" "4.3.4"
   dependencies:

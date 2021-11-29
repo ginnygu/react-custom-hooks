@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 import { toast } from "react-toastify";
 
@@ -9,6 +10,8 @@ import CheckToken from "../../hooks/CheckToken";
 import "./Signin.css";
 
 function Signin({ setUser }) {
+  const { dispatch } = useContext(AuthContext);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -35,10 +38,15 @@ function Signin({ setUser }) {
 
       let decodedToken = jwtDecode(payload.data.payload);
 
-      setUser({
+      dispatch({
+        type: "LOGIN",
         email: decodedToken.email,
         username: decodedToken.username,
       });
+      // setUser({
+      //   email: decodedToken.email,
+      //   username: decodedToken.username,
+      // });
 
       navigate("/protected-home");
     } catch (e) {
