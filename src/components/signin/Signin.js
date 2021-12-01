@@ -29,7 +29,12 @@ function Signin({ setUser }) {
     e.preventDefault();
 
     try {
-      let payload = await axios.post("http://localhost:3001/api/users/login", {
+      let url =
+        process.env.NODE_ENV === "production"
+          ? "https://team-2-movie-backend.herokuapp.com/api/users/login"
+          : "http://localhost:3001/api/users/login";
+
+      let payload = await axios.post(url, {
         email,
         password,
       });

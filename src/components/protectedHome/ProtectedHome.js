@@ -11,8 +11,13 @@ function ProtectedHome() {
 
   async function handleAddFavorite(movieDetail) {
     try {
+      let url =
+        process.env.NODE_ENV === "production"
+          ? "https://team-2-movie-backend.herokuapp.com/api/movie/add-favorite-movie"
+          : `http://localhost:3001/api/movie/add-favorite-movie`;
+
       let payload = await axios.post(
-        `http://localhost:3001/api/movie/add-favorite-movie`,
+        url,
         {
           title: movieDetail.Title,
           poster: movieDetail.Poster,
